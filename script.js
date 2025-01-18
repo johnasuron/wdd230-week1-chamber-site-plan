@@ -1,7 +1,9 @@
+// Function to toggle the mobile menu
 function toggleMenu() {
     const nav = document.querySelector('header nav');
-    nav.classList.toggle('show')
+    nav.classList.toggle('show');
 }
+
 // Function to fetch weather data
 async function fetchWeather() {
     try {
@@ -18,14 +20,23 @@ async function fetchWeather() {
     }
 }
 
+// Function to display weather data
 function displayWeather(data) {
     const { main, weather } = data;
     const temperature = Math.round(main.temp);
     const description = weather[0].description;
     document.getElementById('weather-data').innerHTML = `
-                  <p>Temperature: ${temperature}°C</p>
-                  <p>Description: ${description}</p>
-              `;
+        <p>Temperature: ${temperature}°C</p>
+        <p>Description: ${description}</p>
+    `;
 }
 
+// Function to display the last modified date and time
+function displayLastModified() {
+    const lastModified = document.lastModified;
+    document.getElementById('lastModified').textContent = lastModified;
+}
+
+// Call the functions
 fetchWeather();
+displayLastModified();
